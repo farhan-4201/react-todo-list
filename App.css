@@ -1,0 +1,144 @@
+/* General body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Prevent scrolling */
+}
+
+/* Background blur */
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: blur(20px);
+  z-index: -1;
+}
+
+/* Main container styling */
+.main {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  text-align: center;
+  animation: fadeIn 1.5s ease-in-out;
+  z-index: 1;
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Center div styling */
+.center {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Heading styling */
+h1 {
+  color: #333;
+}
+
+/* Input field styling */
+input[type="text"] {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  width: calc(100% - 22px);
+  margin-bottom: 10px;
+}
+
+/* Button styling */
+button {
+  padding: 10px 20px;
+  background-color: white;
+  border: none;
+  border-radius: 5px;
+  color: #6a11cb;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+}
+
+button:hover {
+  background-color: #6a11cb;
+}
+
+/* Delete button styling */
+.delete-button {
+  background: none;
+  border: none;
+  color: red;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.delete-button i {
+  font-size: 16px;
+}
+
+.delete-button:hover i{
+  color: darkred;
+}
+
+/* List styling */
+ol {
+  padding-left: 20px;
+  text-align: left;
+  color: #555;
+}
+
+li {
+  margin: 10px 0;
+  list-style: decimal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    width: 90%;
+  }
+}
+
+li.deleting {
+  animation: popIntoDustbin 0.5s forwards;
+}
+
+@keyframes popIntoDustbin {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.5) translateX(50px);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(0.1) translateX(100px) translateY(-50px);
+    opacity: 0;
+  }
+}
